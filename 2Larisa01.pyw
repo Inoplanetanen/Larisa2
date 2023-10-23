@@ -22,7 +22,7 @@ import pyperclip
 screen_wide = windll.user32.GetSystemMetrics(0)
 screen_height = windll.user32.GetSystemMetrics(1)
 
-API_TOKEN = '6562719528:AAHhqFDts7CYgtPw_hAaZ4oSmmYv5TnlNeQ'
+API_TOKEN = '6434694996:AAHUqUxQjQaiWVoWctSigm7WLaDbqijZZtU'
 
 USER_NAME = getpass.getuser()
 
